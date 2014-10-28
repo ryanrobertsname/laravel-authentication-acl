@@ -19,7 +19,7 @@ class CreateProfileField extends Migration {
             $table->integer('profile_field_type_id')->unsigned();
             $table->string('value');
             // relations
-            $table->foreign('profile_id')
+            $table->foreign('user_profile_id')
                   ->references('id')->on('user_profile')
                   ->onUpdate('cascade')
                   ->onDelete('cascade');
