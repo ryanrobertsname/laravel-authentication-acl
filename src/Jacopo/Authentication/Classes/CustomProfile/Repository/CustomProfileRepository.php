@@ -13,11 +13,11 @@ use Jacopo\Authentication\Models\ProfileFieldType;
  */
 class CustomProfileRepository
 {
-    protected $profile_id;
+    protected $user_profile_id;
 
-    public function __construct($profile_id)
+    public function __construct($user_profile_id)
     {
-        $this->profile_id = $profile_id;
+        $this->user_profile_id = $user_profile_id;
     }
 
     public static function getAllTypes()
@@ -56,14 +56,14 @@ class CustomProfileRepository
     }
 
     /**
-     * @param $profile_id
+     * @param $user_profile_id
      * @param $profile_type_field_id
      * @param $field_value
      */
     protected function createNewField($profile_type_field_id, $field_value)
     {
         return ProfileField::create([
-                                    "profile_id"            => $this->profile_id,
+                                    "user_profile_id"       => $this->user_profile_id,
                                     "profile_field_type_id" => $profile_type_field_id,
                                     "value"                 => $field_value
                                     ]);
@@ -88,18 +88,18 @@ class CustomProfileRepository
 
     public function getAllFields()
     {
-        return ProfileField::where('profile_id','=',$this->profile_id)
+        return ProfileField::where('user_profile_id','=',$this->user_profile_id)
                 ->get();
     }
     
     /**
-     * @param $profile_id
+     * @param $user_profile_id
      * @param $profile_type_field_id
      * @return mixed
      */
     public function findField($profile_type_field_id)
     {
-        return ProfileField::where('profile_id', '=', $this->profile_id)
+        return ProfileField::where('user_profile_id', '=', $this->user_profile_id)
                 ->where('profile_field_type_id', '=', $profile_type_field_id)
                 ->firstOrFail();
     }
@@ -130,7 +130,7 @@ class CustomProfileRepository
      */
     protected function hasProfileFieldValueAssociated($profile_type)
     {
-        return $profile_type->profile_field()->whereProfileId($this->profile_id)->count();
+        return $profile_type->profile_field()->whereUserProfileId($this->user_profile_id)->count();
     }
 
     /**
@@ -139,7 +139,7 @@ class CustomProfileRepository
      */
     protected function fetchProfileValueAssociated($profile_type)
     {
-        return $profile_type->profile_field()->whereProfileId($this->profile_id)->first()->value;
+        return $profile_type->profile_field()->whereUserProfileId($this->user_profile_id)->first()->value;
     }
 
 }

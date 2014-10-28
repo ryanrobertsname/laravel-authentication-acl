@@ -105,13 +105,13 @@ class CustomProfileRepositoryTest extends DbTestCase {
         $profile_type = $this->custom_profile_1->addNewType($description);
         $profile_type_field_id = $profile_type->id;
         ProfileField::create([
-                             "profile_id"            => $this->profile_1->id,
+                             "user_profile_id"       => $this->profile_1->id,
                              "profile_field_type_id" => $profile_type_field_id,
                              "value"                 => "value1"
                              ]);
 
         ProfileField::create([
-                             "profile_id"            => $this->profile_2->id,
+                             "user_profile_id"       => $this->profile_2->id,
                              "profile_field_type_id" => $profile_type_field_id,
                              "value"                 => "value2"
                              ]);
@@ -253,14 +253,14 @@ class CustomProfileRepositoryTest extends DbTestCase {
     }
 
     /**
-     * @param $profile_id
+     * @param $user_profile_id
      * @param $profile_type_field_id
      * @param $field_value
      */
     protected function createCustomField($profile_type_field_id, $field_value)
     {
         ProfileField::create([
-                             "profile_id"            => $this->profile_1->id,
+                             "user_profile_id"       => $this->profile_1->id,
                              "profile_field_type_id" => $profile_type_field_id,
                              "value"                 => $field_value
                              ]);

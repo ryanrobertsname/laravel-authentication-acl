@@ -15,7 +15,7 @@ class CreateProfileField extends Migration {
         Schema::create('profile_field', function($table)
         {
             $table->increments('id');
-            $table->integer('profile_id')->unsigned();
+            $table->integer('user_profile_id')->unsigned();
             $table->integer('profile_field_type_id')->unsigned();
             $table->string('value');
             // relations
@@ -28,7 +28,7 @@ class CreateProfileField extends Migration {
                   ->onUpdate('cascade')
                   ->onDelete('cascade');
             // indexes
-            $table->unique(['profile_id','profile_field_type_id']);
+            $table->unique(['user_profile_id','profile_field_type_id']);
             $table->timestamps();
         });
 	}
