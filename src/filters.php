@@ -49,3 +49,30 @@ Route::filter('has_perm', function(){
     $authentication_helper = App::make('authentication_helper');
     if(! $authentication_helper->hasPermission($permissions)) App::abort('401');
 });
+
+/*
+|--------------------------------------------------------------------------
+| Configuration Filters
+|--------------------------------------------------------------------------
+|
+*/
+/*
+ * Check that access is permitted in configuration
+ */
+Route::filter('allow_access', function()
+{
+	if (Config::get('laravel-authentication-acl::allow_access') === false)
+	{
+		App::abort('401');
+	}
+});
+/*
+ * Check that user signup is permitted in configuration
+ */
+Route::filter('user_signup', function()
+{
+	if (Config::get('laravel-authentication-acl::allow_user_signup') === false)
+	{
+		App::abort('401');
+	}
+});

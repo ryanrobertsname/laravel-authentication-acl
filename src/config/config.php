@@ -59,14 +59,37 @@ return [
 
   "groups_per_page" => 15,
 
-    /*
-   |--------------------------------------------------------------------------
-   | Captcha validation on signup
-   |--------------------------------------------------------------------------
-   |
-   | Flag to enable/disable captcha validation on user signup
-   |
-   */
+  /*
+  |--------------------------------------------------------------------------
+  | Allow Access
+  |--------------------------------------------------------------------------
+  |
+  | Flag to enable/disable access
+  | May want to disable for certain environments
+  |
+  */
+
+  "allow_access" => true,
+
+  /*
+  |--------------------------------------------------------------------------
+  | Allow user signup
+  |--------------------------------------------------------------------------
+  |
+  | Flag to enable/disable user signups
+  |
+  */
+
+  "allow_user_signup" => true,
+
+  /*
+  |--------------------------------------------------------------------------
+  | Captcha validation on signup
+  |--------------------------------------------------------------------------
+  |
+  | Flag to enable/disable captcha validation on user signup
+  |
+  */
 
   "captcha_signup" => true,
 
@@ -80,4 +103,5 @@ return [
    * Set to true if you want to use the user gravatar instead
    */
   "use_gravatar" => false,
+
 ];
