@@ -160,7 +160,8 @@ class AuthenticationServiceProvider extends ServiceProvider
 
     protected function setupPresenceVerifierConnection()
     {
-        $this->app['validation.presence']->setConnection('authentication');
+        //This may be needed for testing
+        //$this->app['validation.presence']->setConnection('authentication');
     }
 
     /**
